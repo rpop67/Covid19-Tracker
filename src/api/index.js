@@ -18,7 +18,7 @@ export const fetchData = async () => {
 
     // destructuring again to avoid repetition of data.
     const {
-      //here data refers to the label las followed in json file
+      //here data is refering to the label as followed in json format (before destructuring: response.data)refers to the label las followed in json file
       data: { confirmed, recovered, deaths, lastUpdate },
     } = await axios.get(url);
 
@@ -31,5 +31,12 @@ export const fetchData = async () => {
     };
 
     return modifiedData;
+  } catch (error) {}
+};
+
+export const fetchDailyData = async () => {
+  try {
+    const response = await axios.get(`${url}/daily`);
+    console.log(response.data);
   } catch (error) {}
 };

@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 
 const Charts = () => {
+  const [dailyData, setDailyData] = useState({});
   return <h1>Charts</h1>;
 };
 

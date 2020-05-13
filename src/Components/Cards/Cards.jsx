@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import { Card, CardContent, Typography, Grid } from "@material-ui/core";
 import styles from "./Cards.module.css";
 import CountUp from "react-countup";
-
+//to use multiple style classes we will use cx method of classnames as
+import cx from "classnames";
 //destruction confirmed,recovered and 2 other
 const Cards = ({ dataProp: { confirmed, recovered, deaths, lastUpdate } }) => {
   if (!confirmed) {
@@ -13,7 +14,14 @@ const Cards = ({ dataProp: { confirmed, recovered, deaths, lastUpdate } }) => {
   return (
     <div className={styles.container}>
       <Grid container spacing={3} justify="center">
-        <Grid itemm component={Card}>
+        {/* here..we will be using xs for setting width of mobile screen */}
+        <Grid
+          itemm
+          component={Card}
+          xs={12}
+          md={3}
+          className={cx(styles.card, styles.infected)}
+        >
           <CardContent>
             {/* Typography is used in replacement of p and h tag */}
             <Typography color="textSecondary" gutterBottom>
@@ -37,7 +45,13 @@ const Cards = ({ dataProp: { confirmed, recovered, deaths, lastUpdate } }) => {
           </CardContent>
         </Grid>
 
-        <Grid itemm component={Card}>
+        <Grid
+          itemm
+          component={Card}
+          xs={12}
+          md={3}
+          className={cx(styles.card, styles.recovered)}
+        >
           <CardContent>
             {/* Typography is used in replacement of p and h tag */}
             <Typography color="textSecondary" gutterBottom>
@@ -60,7 +74,13 @@ const Cards = ({ dataProp: { confirmed, recovered, deaths, lastUpdate } }) => {
           </CardContent>
         </Grid>
 
-        <Grid itemm component={Card}>
+        <Grid
+          itemm
+          component={Card}
+          xs={12}
+          md={3}
+          className={cx(styles.card, styles.deaths)}
+        >
           <CardContent>
             {/* Typography is used in replacement of p and h tag */}
             <Typography color="textSecondary" gutterBottom>
