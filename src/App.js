@@ -4,7 +4,7 @@ import { Cards, Charts, CountryPicker } from "./Components";
 //in case of index file there is no need to explicilty mention it in the path
 // as './api/index' is equivalent to './api'
 import { fetchData } from "./api";
-import coronaImage from "./images/covid19.png";
+import coronaImage from "./images/covid19i.png";
 
 class App extends React.Component {
   state = {

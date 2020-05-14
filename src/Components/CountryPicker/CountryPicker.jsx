@@ -26,7 +26,7 @@ const CountryPicker = ({ handleCountryChange }) => {
         //now passing the chosen country from dropdown using e.target.value
         onChange={(e) => handleCountryChange(e.target.value)}
       >
-        <option value="global">Global</option>
+        <option value="">Global</option>
         {/* //we need to fetch countries from api instead of hardcoding it */}
         {fetchedCountries.map((country, i) => (
           <option key={i} value={country}>
