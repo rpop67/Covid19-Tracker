@@ -5,7 +5,15 @@ const url = "https://covid19.mathdro.id/api";
 
 //async to deal with async data
 //also  here name export is used and this function will be called inside app.js
-export const fetchData = async () => {
+export const fetchData = async (country) => {
+  let changeableUrl = url;
+  //in case the country is not selected then async(country) will be falsey
+  //and the fetchData will be called using the initial url
+
+  if (country) {
+    changeableUrl = `${url}/countries/${country}`;
+  }
+
   try {
     // destructuring data from response
     // const { data } = await axios.get(url);
@@ -20,7 +28,7 @@ export const fetchData = async () => {
     const {
       //here data is refering to the label as followed in json format (before destructuring: response.data)refers to the label las followed in json file
       data: { confirmed, recovered, deaths, lastUpdate },
-    } = await axios.get(url);
+    } = await axios.get(changeableUrl);
 
     const modifiedData = {
       confirmed: confirmed,
@@ -31,7 +39,9 @@ export const fetchData = async () => {
     };
 
     return modifiedData;
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const fetchDailyData = async () => {

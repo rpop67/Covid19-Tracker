@@ -19,7 +19,7 @@ const CountryPicker = ({ handleCountryChange }) => {
   console.log(fetchedCountries);
 
   return (
-    <FormControl>
+    <FormControl className={styles.FormControl}>
       <NativeSelect
         defaultVale=""
         //here e if for event in callback function

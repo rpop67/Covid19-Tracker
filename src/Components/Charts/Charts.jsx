@@ -13,8 +13,8 @@ import styles from "./Charts.module.css";
 //setDailyData will be set to second value returned by useState
 
 // useEffect Hook, you tell React that your component needs to do something after render
-
-const Charts = () => {
+//data will be used for barhcart
+const Charts = ({ data: { confirmed, recovered, deaths }, country }) => {
   const [dailyData, setDailyData] = useState([]);
 
   useEffect(() => {
@@ -22,9 +22,8 @@ const Charts = () => {
       setDailyData(await fetchDailyData());
     };
 
-    console.log(dailyData);
     fetchAPI();
-  }, [dailyData]);
+  }, []);
 
   //for global display
   const lineChart =
@@ -52,7 +51,36 @@ const Charts = () => {
       />
     ) : null;
 
-  return <div className={styles.container}>{lineChart}</div>;
+  //barchart
+
+  const barChart = confirmed ? (
+    <Bar
+      data={{
+        labels: ["Infected", "Recovered", "Deaths"],
+        datasets: [
+          {
+            label: "People",
+            backgroundColor: [
+              "rgba(250, 234, 11, 0.719)",
+              "rgba(15, 170, 36, 0.596)",
+              "rgba(187, 6, 6, 0.822)",
+            ],
+            //latter data is coming from props dataProp
+            data: [confirmed.value, recovered.value, deaths.value],
+          },
+        ],
+      }}
+      options={{
+        legend: { display: false },
+        title: { display: true, text: `Cuurent state in ${country}` },
+      }}
+    />
+  ) : null;
+
+  return (
+    // if country is selected then display barchart else line chart
+    <div className={styles.container}>{country ? barChart : lineChart}</div>
+  );
 };
 
 export default Charts;
