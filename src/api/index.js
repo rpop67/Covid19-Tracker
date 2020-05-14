@@ -36,7 +36,16 @@ export const fetchData = async () => {
 
 export const fetchDailyData = async () => {
   try {
-    const response = await axios.get(`${url}/daily`);
-    console.log(response.data);
+    //instead of writing response.data again and again
+    //destructuring data here
+    const { data } = await axios.get(`${url}/daily`);
+    //here dailyData is used as an iterator for each element of data
+    const modifiedData = data.map((dailyData) => ({
+      confirmed: dailyData.confirmed.total,
+      deaths: dailyData.deaths.total,
+      date: dailyData.reportDate,
+    }));
+
+    return modifiedData;
   } catch (error) {}
 };

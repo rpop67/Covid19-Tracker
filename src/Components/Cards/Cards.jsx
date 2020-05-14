@@ -7,6 +7,8 @@ import CountUp from "react-countup";
 import cx from "classnames";
 //destruction confirmed,recovered and 2 other
 const Cards = ({ dataProp: { confirmed, recovered, deaths, lastUpdate } }) => {
+  console.log("printing this in cards.js: ", this);
+
   if (!confirmed) {
     return "Loading....";
   }

@@ -29,7 +29,6 @@ class App extends React.Component {
         <Cards dataProp={data} />
         <CountryPicker />
         <Charts />
-        <h1>APP</h1>
       </div>
     );
   }
