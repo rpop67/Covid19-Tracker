@@ -91,7 +91,7 @@ const Cards = ({ dataProp: { confirmed, recovered, deaths, lastUpdate } }) => {
             <Typography variant="h5">
               <CountUp
                 start={0}
-                end={confirmed.value}
+                end={deaths.value}
                 duration={2.5}
                 separator=","
               />
